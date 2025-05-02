@@ -39,7 +39,7 @@ namespace OpenAPIAndADMDemo
         {
             //var directory = new DirectoryInfo(Environment.CurrentDirectory);
             //return directory.Parent.FullName;
-            return @"C:\Program Files\SCIA\Engineer20.0\"; // SEn application installation folder, don't forget run "esa.exe /regserver" from commandline with Admin rights
+            return @"C:\Program Files\SCIA\Engineer24.0"; // SEn application installation folder, don't forget run "esa.exe /regserver" from commandline with Admin rights
         }
 
         /// <summary>
@@ -55,7 +55,8 @@ namespace OpenAPIAndADMDemo
 
         private static string GetTempPath()
         {
-            return @"C:\Users\jbroz\ESA20.0\Temp\"; // Must be SEn application temp path, run SEn and go to menu: Setup -> Options -> Directories -> Temporary files
+            //return @"C:\Users\jbroz\ESA20.0\Temp\"; // Must be SEn application temp path, run SEn and go to menu: Setup -> Options -> Directories -> Temporary files
+            return @"C:\Users\maresjiri\ESA24.0\Temp"; // Must be SEn application temp path, run SEn and go to menu: Setup -> Options -> Directories -> Temporary files
         }
 
         static private string SciaEngineerProjecTemplate => GetTemplatePath();
@@ -63,7 +64,8 @@ namespace OpenAPIAndADMDemo
         private static string GetTemplatePath()
         {
             //Open project in SCIA Engineer on specified path
-            return @"C:\WORK\SourceCodes\OpenAPIComplexExampleWithADMCSharp\res\OpenAPIEmptyProject.esa";
+            //return @"C:\WORK\SourceCodes\OpenAPIComplexExampleWithADMCSharp\res\OpenAPIEmptyProject.esa";
+            return @"C:\Temp\template.esad";
         }
 
         static private string AppLogPath => GetThisAppLogPath();
@@ -120,6 +122,9 @@ namespace OpenAPIAndADMDemo
                 }
                 return Assembly.LoadFrom(dllFullPath);
             };
+
+
+
         }
         static void RunSCIAOpenAPI_simple()
         {
@@ -298,6 +303,7 @@ namespace OpenAPIAndADMDemo
 
 
             // Run calculation
+            proj.CreateMesh(); 
             proj.RunCalculation();
             Console.WriteLine($"My model calculate");
 
@@ -623,8 +629,8 @@ namespace OpenAPIAndADMDemo
                 SystemLine = CurveAlignment.Centre,
                 Type = new CSInfrastructure.FlexibleEnum<Member1DType>(Member1DType.Column),
                 Layer = "Columns",
-                EccentricityEy = UnitsNet.Length.FromMeters(0),
-                EccentricityEz = UnitsNet.Length.FromMeters(0)
+                //EccentricityEy = UnitsNet.Length.FromMeters(0),
+                //EccentricityEz = UnitsNet.Length.FromMeters(0)
             };
             addResult = model.CreateAdmObject(B1);
             if (addResult.PartialAddResult.Status != AdmChangeStatus.Ok) { throw HandleErrorResult(addResult); }
@@ -635,8 +641,8 @@ namespace OpenAPIAndADMDemo
                 SystemLine = CurveAlignment.Centre,
                 Type = new CSInfrastructure.FlexibleEnum<Member1DType>(Member1DType.Column),
                 Layer = "Columns",
-                EccentricityEy = UnitsNet.Length.FromMeters(0),
-                EccentricityEz = UnitsNet.Length.FromMeters(0)
+                //EccentricityEy = UnitsNet.Length.FromMeters(0),
+                //EccentricityEz = UnitsNet.Length.FromMeters(0)
             };
             addResult = model.CreateAdmObject(B2);
             if (addResult.PartialAddResult.Status != AdmChangeStatus.Ok) { throw HandleErrorResult(addResult); }
@@ -647,8 +653,8 @@ namespace OpenAPIAndADMDemo
                 SystemLine = CurveAlignment.Centre,
                 Type = new CSInfrastructure.FlexibleEnum<Member1DType>(Member1DType.Column),
                 Layer = "Columns",
-                EccentricityEy = UnitsNet.Length.FromMeters(0),
-                EccentricityEz = UnitsNet.Length.FromMeters(0)
+                //EccentricityEy = UnitsNet.Length.FromMeters(0),
+                //EccentricityEz = UnitsNet.Length.FromMeters(0)
             };
             addResult = model.CreateAdmObject(B3);
             if (addResult.PartialAddResult.Status != AdmChangeStatus.Ok) { throw HandleErrorResult(addResult); }
@@ -659,8 +665,8 @@ namespace OpenAPIAndADMDemo
                 SystemLine = CurveAlignment.Centre,
                 Type = new CSInfrastructure.FlexibleEnum<Member1DType>(Member1DType.Column),
                 Layer = "Columns",
-                EccentricityEy = UnitsNet.Length.FromMeters(0),
-                EccentricityEz = UnitsNet.Length.FromMeters(0)
+                //EccentricityEy = UnitsNet.Length.FromMeters(0),
+                //EccentricityEz = UnitsNet.Length.FromMeters(0)
             };
             addResult = model.CreateAdmObject(B4);
             if (addResult.PartialAddResult.Status != AdmChangeStatus.Ok) { throw HandleErrorResult(addResult); }
@@ -671,8 +677,8 @@ namespace OpenAPIAndADMDemo
                 SystemLine = CurveAlignment.Centre,
                 Type = new CSInfrastructure.FlexibleEnum<Member1DType>(Member1DType.Beam),
                 Layer = "Beams",
-                EccentricityEy = UnitsNet.Length.FromMeters(0),
-                EccentricityEz = UnitsNet.Length.FromMeters(0)
+                //EccentricityEy = UnitsNet.Length.FromMeters(0),
+                //EccentricityEz = UnitsNet.Length.FromMeters(0)
             };
             addResult = model.CreateAdmObject(B5);
             if (addResult.PartialAddResult.Status != AdmChangeStatus.Ok) { throw HandleErrorResult(addResult); }
@@ -683,8 +689,8 @@ namespace OpenAPIAndADMDemo
                 SystemLine = CurveAlignment.Centre,
                 Type = new CSInfrastructure.FlexibleEnum<Member1DType>(Member1DType.Beam),
                 Layer = "Beams",
-                EccentricityEy = UnitsNet.Length.FromMeters(0),
-                EccentricityEz = UnitsNet.Length.FromMeters(0)
+                //EccentricityEy = UnitsNet.Length.FromMeters(0),
+                //EccentricityEz = UnitsNet.Length.FromMeters(0)
             };
             addResult = model.CreateAdmObject(B6);
             if (addResult.PartialAddResult.Status != AdmChangeStatus.Ok) { throw HandleErrorResult(addResult); }
@@ -695,8 +701,8 @@ namespace OpenAPIAndADMDemo
                 SystemLine = CurveAlignment.Centre,
                 Type = new CSInfrastructure.FlexibleEnum<Member1DType>(Member1DType.Beam),
                 Layer = "Beams",
-                EccentricityEy = UnitsNet.Length.FromMeters(0),
-                EccentricityEz = UnitsNet.Length.FromMeters(0)
+                //EccentricityEy = UnitsNet.Length.FromMeters(0),
+                //EccentricityEz = UnitsNet.Length.FromMeters(0)
             };
             addResult = model.CreateAdmObject(B7);
             if (addResult.PartialAddResult.Status != AdmChangeStatus.Ok) { throw HandleErrorResult(addResult); }
@@ -707,8 +713,8 @@ namespace OpenAPIAndADMDemo
                 SystemLine = CurveAlignment.Centre,
                 Type = new CSInfrastructure.FlexibleEnum<Member1DType>(Member1DType.Beam),
                 Layer = "Beams",
-                EccentricityEy = UnitsNet.Length.FromMeters(0),
-                EccentricityEz = UnitsNet.Length.FromMeters(0)
+                //EccentricityEy = UnitsNet.Length.FromMeters(0),
+                //EccentricityEz = UnitsNet.Length.FromMeters(0)
             };
             addResult = model.CreateAdmObject(B8);
             if (addResult.PartialAddResult.Status != AdmChangeStatus.Ok) { throw HandleErrorResult(addResult); }
@@ -768,7 +774,7 @@ namespace OpenAPIAndADMDemo
                 Type = new CSInfrastructure.FlexibleEnum<Member2DType>(Member2DType.Plate),
                 Behaviour = Member2DBehaviour.Isotropic,
                 Alignment = Member2DAlignment.Centre,
-                EccentricityEz = UnitsNet.Length.FromMeters(0),
+                //EccentricityEz = UnitsNet.Length.FromMeters(0),
                 Shape = Member2DShape.Flat
             };
             addResult = model.CreateAdmObject(S1);
@@ -814,7 +820,7 @@ namespace OpenAPIAndADMDemo
                 Type = new CSInfrastructure.FlexibleEnum<Member2DType>(Member2DType.Plate),
                 Behaviour = Member2DBehaviour.Isotropic,
                 Alignment = Member2DAlignment.Centre,
-                EccentricityEz = UnitsNet.Length.FromMeters(0),
+                //EccentricityEz = UnitsNet.Length.FromMeters(0),
                 Shape = Member2DShape.Flat
             };
             addResult = model.CreateAdmObject(S2);
@@ -864,7 +870,7 @@ namespace OpenAPIAndADMDemo
                 Type = new CSInfrastructure.FlexibleEnum<Member2DType>(Member2DType.Wall),
                 Behaviour = Member2DBehaviour.Isotropic,
                 Alignment = Member2DAlignment.Centre,
-                EccentricityEz = UnitsNet.Length.FromMeters(0),
+                //EccentricityEz = UnitsNet.Length.FromMeters(0),
                 Shape = Member2DShape.Flat
             };
             addResult = model.CreateAdmObject(S3);
@@ -974,8 +980,8 @@ namespace OpenAPIAndADMDemo
                 SystemLine = CurveAlignment.Centre,
                 Type = new CSInfrastructure.FlexibleEnum<Member1DType>(Member1DType.Beam),
                 Layer = "Beams",
-                EccentricityEy = UnitsNet.Length.FromMeters(0),
-                EccentricityEz = UnitsNet.Length.FromMeters(0)
+                //EccentricityEy = UnitsNet.Length.FromMeters(0),
+                //EccentricityEz = UnitsNet.Length.FromMeters(0)
             };
             addResult = model.CreateAdmObject(B9);
             if (addResult.PartialAddResult.Status != AdmChangeStatus.Ok) { throw HandleErrorResult(addResult); }
@@ -1153,7 +1159,17 @@ namespace OpenAPIAndADMDemo
         static void Main(string[] args)
         {
             KillSCIAEngineerOrphanRuns();
+
+
+            //jxm, this will resolve the above
+            //AssemblyName openApi = AssemblyName.GetAssemblyName($"{SciaEngineerFullPath}\\SCIA.OpenAPI.dll");
+            //AssemblyName openApi = AssemblyName.GetAssemblyName($"C:\\Program Files\\SCIA\\Engineer24.0\\OpenAPI_dll\\SCIA.OpenAPI.dll");
+            //AppDomain.CurrentDomain.Load(openApi);
+
+
+            //jxm, 30-04-25, the original function does not work with later versions
             SciaOpenApiAssemblyResolve();
+
 
             //DeleteTemp();
             //RunSCIAOpenAPI_simple();
