@@ -24,6 +24,8 @@ using ModelExchanger.AnalysisDataModel.Implementation.Repositories;
 using SCIA.OpenAPI;
 using SciaTools.Kernel.ModelExchangerExtension.Contracts.Ioc;
 using System.Diagnostics;
+using ModelExchanger.AnalysisDataModel.Models;
+using System.Windows.Media.Media3D;
 
 namespace OpenAPIAndADMDemo
 {
@@ -297,15 +299,34 @@ namespace OpenAPIAndADMDemo
             CreateModel(proj.Model);
  
             proj.Model.RefreshModel_ToSCIAEngineer();
-
             Console.WriteLine($"My model sent to SEn");
 
 
 
+            // Fix for CS7036: Provide the required 'model' argument to the TrySynchronizeModel method.
+            AnalysisModel mdl = new AnalysisModel();
+            proj.Model.TrySynchronizeModel(mdl);
+
+
+
+            proj.CreateMesh();
+
+
+
+
             // Run calculation
-            proj.CreateMesh(); 
             proj.RunCalculation();
-            Console.WriteLine($"My model calculate");
+            Console.WriteLine($"My model calculation run done");
+
+
+
+
+            proj.Model.RefreshModel_FromSCIAEngineer();
+            Console.WriteLine($"My model refreshed from SEn");
+
+
+            //proj.Model.TrySynchronizeModel();
+
 
             //storage for results
             OpenApiE2EResults storage = new OpenApiE2EResults();
@@ -1135,6 +1156,9 @@ namespace OpenAPIAndADMDemo
             };
             addResult = model.CreateAdmObject(C1);
             if (addResult.PartialAddResult.Status != AdmChangeStatus.Ok) { throw HandleErrorResult(addResult); }
+
+
+             
 
         }
 
